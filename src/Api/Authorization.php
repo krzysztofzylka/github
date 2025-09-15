@@ -9,6 +9,7 @@ use Exception;
  */
 class Authorization extends AbstractApi
 {
+
     /**
      * Get token permissions information
      * @return array
@@ -20,10 +21,10 @@ class Authorization extends AbstractApi
 
     /**
      * Check if token has specific permission
-     * @param $scope
+     * @param string $scope
      * @return bool
      */
-    public function hasScope($scope): bool
+    public function hasScope(string $scope): bool
     {
         return $this->client->hasScope($scope);
     }
@@ -66,10 +67,10 @@ class Authorization extends AbstractApi
 
     /**
      * Check if specific action can be performed
-     * @param $action
+     * @param string $action
      * @return bool
      */
-    public function canPerformAction($action): bool
+    public function canPerformAction(string $action): bool
     {
         $requiredScopes = $this->getRequiredScopesForAction($action);
 
@@ -78,10 +79,10 @@ class Authorization extends AbstractApi
 
     /**
      * Map action to required permissions
-     * @param $action
+     * @param string $action
      * @return array
      */
-    private function getRequiredScopesForAction($action): array
+    private function getRequiredScopesForAction(string $action): array
     {
         $scopeMap = [
             'create_repo' => ['repo'],
@@ -121,21 +122,22 @@ class Authorization extends AbstractApi
             $this->client->get('/user');
 
             return true;
-        } catch (Exception $e) {
+        } catch (Exception) {
             return false;
         }
     }
 
     /**
      * Get OAuth app information (if using OAuth App)
-     * @param $clientId
-     * @param $token
+     * @param string $clientId
+     * @param string $token
      * @return array
      */
-    public function getOAuthAppInfo($clientId, $token): array
+    public function getOAuthAppInfo(string $clientId, string $token): array
     {
         return $this->client->get("/applications/{$clientId}/token", [
             'access_token' => $token
         ]);
     }
+
 }

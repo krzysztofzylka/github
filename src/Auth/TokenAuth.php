@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Auth;
  */
 class TokenAuth implements AuthInterface
 {
+
     private string $token;
 
     public function __construct(string $token)
@@ -18,4 +19,5 @@ class TokenAuth implements AuthInterface
     {
         return 'Authorization: Bearer ' . $this->token;
     }
+
 }

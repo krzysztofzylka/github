@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Auth;
  */
 class BasicAuth implements AuthInterface
 {
+
     private string $username;
 
     private string $password;
@@ -21,4 +22,5 @@ class BasicAuth implements AuthInterface
     {
         return 'Authorization: Basic ' . base64_encode($this->username . ':' . $this->password);
     }
+
 }

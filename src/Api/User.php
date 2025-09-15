@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Api;
  */
 class User extends AbstractApi
 {
+
     /**
      * Get authenticated user
      * @return array
@@ -56,4 +57,5 @@ class User extends AbstractApi
 
         return $this->client->paginate($endpoint);
     }
+
 }
