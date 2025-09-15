@@ -7,9 +7,11 @@ namespace krzysztofzylka\github\Auth;
  */
 interface AuthInterface
 {
+
     /**
      * Get authorization headers
      * @return string
      */
     public function getAuthHeader(): string;
+
 }

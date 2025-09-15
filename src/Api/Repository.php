@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Api;
  */
 class Repository extends AbstractApi
 {
+
     /**
      * Get repository information
      * @param string $owner
@@ -23,7 +24,7 @@ class Repository extends AbstractApi
      * @param string|null $username
      * @return array
      */
-    public function listUserRepos(string $username = null): array
+    public function listUserRepos(?string $username = null): array
     {
         $endpoint = $username ? "/users/{$username}/repos" : "/user/repos";
 
@@ -138,4 +139,5 @@ class Repository extends AbstractApi
     {
         return $this->client->get("/repos/{$owner}/{$repo}/compare/{$base}...{$head}");
     }
+
 }

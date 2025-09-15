@@ -7,6 +7,7 @@ use Exception;
 
 class Client
 {
+
     /**
      * API URL
      * @var string
@@ -53,11 +54,11 @@ class Client
     }
 
     /**
-     * Set authentication method
-     * @param AuthInterface $auth
+     * Set an authentication method
+     * @param ?AuthInterface $auth
      * @return Client
      */
-    public function setAuth(AuthInterface $auth): self
+    public function setAuth(?AuthInterface $auth): self
     {
         $this->auth = $auth;
 
@@ -233,9 +234,11 @@ class Client
 
     /**
      * Handle API errors
+     * @param int $code
+     * @param string $body
      * @throws Exception
      */
-    private function handleError($code, $body): void
+    private function handleError(int $code, string $body): void
     {
         $error = json_decode($body, true);
         $message = $error['message'] ?? 'Unknown error';
@@ -277,14 +280,12 @@ class Client
 
     /**
      * Check if token has specific scope
-     * @param $scope
+     * @param string $scope
      * @return bool
      */
-    public function hasScope($scope): bool
+    public function hasScope(string $scope): bool
     {
-        $scopes = $this->getTokenScopes();
-
-        return in_array($scope, $scopes);
+        return in_array($scope, $this->getTokenScopes());
     }
 
     /**
@@ -300,10 +301,10 @@ class Client
      * Get all pages of results (pagination)
      * @param string $endpoint
      * @param array $params
-     * @param null $maxPages
+     * @param null|int $maxPages
      * @return array
      */
-    public function paginate(string $endpoint, array $params = [], $maxPages = null): array
+    public function paginate(string $endpoint, array $params = [], ?int $maxPages = null): array
     {
         $allResults = [];
         $page = 1;
@@ -333,4 +334,5 @@ class Client
 
         return $allResults;
     }
+
 }

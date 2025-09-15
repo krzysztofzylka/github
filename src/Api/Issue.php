@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Api;
  */
 class Issue extends AbstractApi
 {
+
     /**
      * List issues
      * @param string $owner
@@ -79,4 +80,5 @@ class Issue extends AbstractApi
     {
         return $this->update($owner, $repo, $number, ['state' => 'open']);
     }
+
 }

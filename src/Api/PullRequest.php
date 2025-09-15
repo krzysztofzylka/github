@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Api;
  */
 class PullRequest extends AbstractApi
 {
+
     /**
      * List pull requests
      * @param string $owner
@@ -92,4 +93,5 @@ class PullRequest extends AbstractApi
     {
         return $this->client->paginate("/repos/{$owner}/{$repo}/pulls/{$number}/commits");
     }
+
 }

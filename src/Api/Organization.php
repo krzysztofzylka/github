@@ -7,6 +7,7 @@ namespace krzysztofzylka\github\Api;
  */
 class Organization extends AbstractApi
 {
+
     /**
      * Get organization
      * @param string $org
@@ -46,4 +47,5 @@ class Organization extends AbstractApi
     {
         return $this->client->paginate("/orgs/{$org}/teams");
     }
+
 }

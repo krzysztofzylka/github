@@ -15,6 +15,7 @@ use krzysztofzylka\github\Auth\AuthInterface;
  */
 class Github
 {
+
     private Client $client;
 
     private Repository $repositories;
@@ -29,17 +30,17 @@ class Github
 
     private Authorization $authorization;
 
-    public function __construct(AuthInterface $auth = null)
+    public function __construct(?AuthInterface $auth = null)
     {
         $this->client = new Client($auth);
     }
 
     /**
      * Set authentication
-     * @param AuthInterface $auth
+     * @param ?AuthInterface $auth
      * @return Github
      */
-    public function authenticate(AuthInterface $auth): self
+    public function authenticate(?AuthInterface $auth): self
     {
         $this->client->setAuth($auth);
 
@@ -132,4 +133,5 @@ class Github
 
         return $this->authorization;
     }
+
 }
